@@ -1,0 +1,31 @@
+假设我们有一个 C++ 项目，包含两个源文件 main.cpp 和 hello.cpp，它们位于同一个目录下。我们希望使用 CMake 来生成 Makefile 并编译该项目。
+
+首先，我们需要创建一个 CMakeLists.txt 文件，用来描述项目的构建过程。该文件应该放置在项目的根目录下，其内容如下：
+
+scss
+Copy code
+cmake_minimum_required(VERSION 3.10)  # 指定 CMake 的最低版本要求
+
+project(hello-world)  # 指定项目名称
+
+# 添加可执行文件
+add_executable(hello main.cpp hello.cpp)
+上述内容指定了 CMake 的最低版本要求、项目名称，并使用 add_executable 命令添加了一个可执行文件 hello，它由 main.cpp 和 hello.cpp 两个源文件编译而成。
+
+接下来，我们进入到项目根目录，创建一个新的文件夹 build，并在其中执行 CMake 命令，生成 Makefile。在命令行中执行如下命令：
+
+bash
+Copy code
+mkdir build
+cd build
+cmake ..
+上述命令创建了一个新的 build 目录，并将当前工作目录切换到该目录下。接着，我们使用 cmake .. 命令来指定项目根目录为 CMakeLists.txt 文件的位置，从而生成 Makefile。
+
+生成 Makefile 后，我们可以使用 make 命令编译该项目。在 build 目录下执行如下命令：
+
+go
+Copy code
+make
+该命令将使用生成的 Makefile 编译该项目，并生成可执行文件 hello。
+
+以上就是一个简单的 CMake 例子，它演示了如何使用 CMake 来生成 Makefile 并编译一个 C++ 项目
